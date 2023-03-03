@@ -24,7 +24,7 @@ app.use(express.static(publicDirectoryPath));
 
 /* Render pages*/ 
 app.get('', (req, res)=>{
-    res.render('index', {
+    res.render('index', { //render傳進去的物件在views或templates都可以使用
         title: 'Weather App',
         name: 'LZW'
     });
@@ -60,7 +60,7 @@ app.get('/weather', (req, res)=>{
             if(error){     
                 return res.send({error});
             } 
-            res.send({
+            res.send({                  //The res.send() function basically sends the HTTP response.
                 forecast: forcastData,
                 location,
                 address: req.query.address
@@ -75,7 +75,7 @@ app.get('/weather', (req, res)=>{
 })
 
 app.get('/products',(req, res)=>{
-    if(!req.query.searh){ //要用return，否則會send2次，但是一次操作只能一次send
+    if(!req.query.search){ //要用return，否則會send2次，但是一次操作只能一次send
         return res.send({
             error: 'You must provide a search term.'
         })
