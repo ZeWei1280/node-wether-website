@@ -15,13 +15,15 @@ const forecast = (longitude, latitude, callback) =>{
                 location: body.location.name,
                 description: body.current.weather_descriptions[0],
                 temperature: body.current.temperature,
-                feelslike: body.current.feelslike
+                feelslike: body.current.feelslike,
+                humidity: body.current.humidity
             };
             // callback(undefined, weatherData);
-            const {location, description, temperature, feelslike} = weatherData;
+            const {location, description, temperature, feelslike, humidity} = weatherData;
             const rt =  location + ': ' + description + '. It is currently '+ 
-            temperature + ' degrees out. It feels like ' + 
-            feelslike + ' degreees out.';
+            temperature + ' degrees out. It feels like ' +
+            feelslike + ' degreees out.' + 
+            'Current humidity: ' + humidity +'%';
             callback(undefined, rt);
         }
     })
